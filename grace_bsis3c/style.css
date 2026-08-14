@@ -1,0 +1,569 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #123c69 0%,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            #47216b 0%,
+            transparent 30%
+        ),
+        #070b14;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
+
+body::before,
+body::after {
+    content: "";
+
+    position: fixed;
+
+    border-radius: 50%;
+
+    filter: blur(5px);
+
+    z-index: -1;
+
+    pointer-events: none;
+}
+
+
+body::before {
+    width: 300px;
+    height: 300px;
+
+    background: rgba(0, 238, 255, 0.15);
+
+    top: -100px;
+    left: -100px;
+}
+
+
+body::after {
+    width: 350px;
+    height: 350px;
+
+    background: rgba(157, 78, 221, 0.15);
+
+    bottom: -120px;
+    right: -100px;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container {
+    position: relative;
+
+    width: 430px;
+    min-height: 500px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   ANIMATED BORDER
+========================================= */
+
+.container::before {
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 30px;
+
+    padding: 2px;
+
+    background: linear-gradient(
+        135deg,
+        #00eeff,
+        transparent 35%,
+        #8a2be2,
+        transparent 70%,
+        #00eeff
+    );
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite: xor;
+
+    mask-composite: exclude;
+
+    animation: rotateBorder 6s linear infinite;
+
+    /*
+       VERY IMPORTANT:
+       This prevents the border from blocking clicks.
+    */
+
+    pointer-events: none;
+}
+
+
+@keyframes rotateBorder {
+
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+
+}
+
+
+/* =========================================
+   LOGIN BOX
+========================================= */
+
+.login-box {
+    position: relative;
+
+    width: 100%;
+
+    padding: 45px 50px;
+
+    border-radius: 30px;
+
+    background: rgba(12, 18, 32, 0.85);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.55),
+        inset 0 0 30px rgba(255, 255, 255, 0.02);
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.login-box form {
+    width: 100%;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.login-box h2 {
+    font-size: 2.3em;
+
+    text-align: center;
+
+    margin-bottom: 8px;
+
+    background: linear-gradient(
+        90deg,
+        #00eeff,
+        #ffffff,
+        #a855f7
+    );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================================
+   SUBTITLE
+========================================= */
+
+.subtitle {
+    color: #8d99ae;
+
+    text-align: center;
+
+    font-size: 0.85em;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   INPUT BOX
+========================================= */
+
+.input-box {
+    position: relative;
+
+    margin: 25px 0;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.input-box input {
+    width: 100%;
+
+    height: 55px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    outline: none;
+
+    border-radius: 14px;
+
+    color: #fff;
+
+    font-size: 0.95em;
+
+    padding: 0 20px 0 50px;
+
+    transition: 0.3s ease;
+}
+
+
+.input-box input:focus {
+    border-color: #00eeff;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 238, 255, 0.08),
+        0 0 20px rgba(0, 238, 255, 0.12);
+}
+
+
+/* =========================================
+   INPUT LABEL
+========================================= */
+
+.input-box label {
+    position: absolute;
+
+    left: 50px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #8d99ae;
+
+    pointer-events: none;
+
+    transition: 0.3s ease;
+}
+
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+
+    top: 0;
+
+    left: 15px;
+
+    font-size: 0.75em;
+
+    padding: 0 7px;
+
+    color: #00eeff;
+
+    background: #101827;
+}
+
+
+/* =========================================
+   INPUT ICON
+========================================= */
+
+.input-box::before {
+
+    position: absolute;
+
+    left: 18px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #718096;
+
+    z-index: 2;
+
+    font-size: 1.1em;
+
+    pointer-events: none;
+}
+
+
+/* Username icon */
+
+.input-box:nth-of-type(1)::before {
+    content: "👤";
+}
+
+
+/* Password icon */
+
+.input-box:nth-of-type(2)::before {
+    content: "🔒";
+}
+
+
+/* =========================================
+   FORGOT PASSWORD
+========================================= */
+
+.forgot-pass {
+
+    text-align: right;
+
+    margin-top: -10px;
+
+    margin-bottom: 25px;
+}
+
+
+.forgot-pass a {
+
+    color: #8d99ae;
+
+    font-size: 0.8em;
+
+    text-decoration: none;
+}
+
+
+.forgot-pass a:hover {
+
+    color: #00eeff;
+
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.btn {
+
+    width: 100%;
+
+    height: 52px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    color: #071019;
+
+    font-size: 1em;
+
+    font-weight: 700;
+
+    background: linear-gradient(
+        90deg,
+        #00eeff,
+        #00bcd4,
+        #8a2be2
+    );
+
+    background-size: 200% auto;
+
+    transition: 0.4s ease;
+
+    box-shadow:
+        0 10px 25px rgba(0, 238, 255, 0.18);
+
+    position: relative;
+
+    z-index: 20;
+
+    pointer-events: auto;
+}
+
+
+.btn:hover {
+
+    background-position: right center;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 35px rgba(138, 43, 226, 0.3);
+}
+
+
+.btn:active {
+
+    transform: translateY(0);
+
+}
+
+
+/* =========================================
+   GLOWING DOTS
+========================================= */
+
+.container span {
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #00eeff;
+
+    box-shadow:
+        0 0 10px #00eeff,
+        0 0 20px #00eeff;
+
+    animation:
+        floating 3s ease-in-out infinite;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+.container span:nth-child(1) {
+
+    top: 30px;
+
+    left: 40px;
+
+}
+
+
+.container span:nth-child(2) {
+
+    top: 100px;
+
+    right: 20px;
+
+    animation-delay: 1s;
+
+}
+
+
+.container span:nth-child(3) {
+
+    bottom: 70px;
+
+    left: 20px;
+
+    animation-delay: 2s;
+
+}
+
+
+/* =========================================
+   FLOATING ANIMATION
+========================================= */
+
+@keyframes floating {
+
+    0%,
+    100% {
+
+        transform: translateY(0);
+
+        opacity: 0.5;
+
+    }
+
+    50% {
+
+        transform: translateY(-20px);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+    .container {
+
+        width: 92%;
+
+        min-height: 470px;
+
+    }
+
+
+    .login-box {
+
+        padding: 35px 25px;
+
+    }
+
+
+    .login-box h2 {
+
+        font-size: 2em;
+
+    }
+
+}

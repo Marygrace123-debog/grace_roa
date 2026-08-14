@@ -1,0 +1,98 @@
+CREATE DATABASE IF NOT EXISTS arcalinbsis3c;
+
+USE arcalinbsis3c;
+
+CREATE TABLE IF NOT EXISTS patient(
+		  PatientID INT NOT NULL PRIMARY KEY,
+		  LastName VARCHAR(50) NOT NULL,
+		  FirstName VARCHAR(50) NOT NULL,
+		  DoctorID VARCHAR(50)NOT NULL,
+		  UserName VARCHAR(50)NOT NULL,
+		  Password VARCHAR(50)NOT NULL
+);
+CREATE TABLE IF NOT EXISTS Doctor (
+		  DocotorID INT NOT NULL PRIMARY KEY,
+		  DocoterName VARCHAR(50) NOT NULL,
+		  DepartmentID VARCHAR(50) NOT NULL		 
+);
+CREATE TABLE IF NOT EXISTS department(
+		  DepartmentID INT NOT NULL PRIMARY KEY,
+		  DepartmantName VARCHAR(50) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS appoinment(
+		  AppoinmentID INT NOT NULL PRIMARY KEY,
+		  PatientID VARCHAR(50) NOT NULL,
+		  DocotorID VARCHAR(50) NOT NULL,
+		  Datw VARCHAR(50)NOT NULL,
+		  DoctorName VARCHAR(50)NOT NULL
+);
+CREATE TABLE IF NOT EXISTS precription(
+		  PrecriptionID INT NOT NULL PRIMARY KEY,
+		  AppoinmentID VARCHAR(50) NOT NULL,
+		  Medicine VARCHAR(50) NOT NULL
+);
+INSERT INTO patient (PatientID, Lastname, FirstName, DoctorID, UserName, Password)
+VALUES ('1', 'Santos', 'Maria', 'D01', 'grace', '1122')
+
+INSERT INTO patient (PatientID, Lastname, FirstName, DoctorID, UserName, Password)
+VALUES ('2', 'Cruz', 'Kevin', 'D02', 'arcalin', '2006')
+
+INSERT INTO patient (PatientID, Lastname, FirstName, DoctorID, UserName, Password)
+VALUES ('3', 'Reyes', 'Angela', 'D03', 'grasia', '2007')
+
+INSERT INTO patient (PatientID, Lastname, FirstName, DoctorID, UserName, Password)
+VALUES ('4', 'Garcia', 'Mark', 'D01', 'grasia', '2008')
+
+INSERT INTO patient (PatientID, Lastname, FirstName, DoctorID, UserName, Password)
+VALUES ('5', 'Flores', 'Jenny', 'D02', 'Roshiel', '2009')
+
+INSERT INTO doctor (DocotorID, DocoterName, DepartmentID)
+VALUES ('1', 'DRRamos', 'DP01')
+
+INSERT INTO doctor (DocotorID, DocoterName, DepartmentID)
+VALUES ('2', 'DRLim', 'DP02')
+
+INSERT INTO doctor (DocotorID, DocoterName, DepartmentID)
+VALUES ('3', 'DRTan', 'DP03')
+
+INSERT INTO department (DepartmentID, DepartmantName)
+VALUES ('1', 'InternalMedicine')
+
+INSERT INTO department (DepartmentID, DepartmantName)
+VALUES ('2', 'Pediatrics')
+
+INSERT INTO department (DepartmentID, DepartmantName)
+VALUES ('3', 'Dermatology')
+
+INSERT INTO appoinment (AppointmentID,PatientID, DocoterID, Datee, DoctorName)
+VALUES ('1', '001', 'D01', '2026/07/01', 'DRRamos')
+
+INSERT INTO appoinment (AppointmentID,PatientID, DocoterID, Datee, DoctorName)
+VALUES ('2', '002', 'D02', '2026/07/02', 'DRLim')
+
+INSERT INTO appoinment (AppointmentID,PatientID, DocoterID, Datee, DoctorName)
+VALUES ('3', '003', 'D03', '2026/07/03', 'DRTan')
+
+INSERT INTO appoinment (AppointmentID,PatientID, DocoterID, Datee, DoctorName)
+VALUES ('4', '004', 'D01', '2026/07/04', 'DRRamos')
+
+INSERT INTO appoinment (AppointmentID,PatientID, DocoterID, Datee, DoctorName)
+VALUES ('5', '005', 'D02', '2026/07/5', 'DRLim')
+
+INSERT INTO prescription (PrescriptionID, AppointmentID, Medicine)
+VALUES ('1', 'A001', 'Amoxicillin')
+
+INSERT INTO prescription (PrescriptionID, AppoinmentID, Medicine)
+VALUES ('2', 'A002', 'Paracetamol')
+
+INSERT INTO prescription (PrescriptionID, AppoinmentID, Medicine)
+VALUES ('3', 'A003', 'Ibuprofen')
+
+INSERT INTO prescription (PrescriptionID, AppoinmentID, Medicine)
+VALUES ('4', 'A004', 'Cetirizine')
+
+INSERT INTO prescription (PrescriptionID, AppoinmentID, Medicine)
+VALUES ('5', 'A005','VitaminC')
+
+
+
